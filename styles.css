@@ -1,0 +1,434 @@
+:root {
+    --primary-color: #00ff41;
+    --secondary-color: #008f11;
+    --dark-bg: #0c0c0c;
+    --card-bg: #1a1a1a;
+    --text-color: #f7f7f7; /* Unchanged for other elements */
+    --content-text-color: #b3b3b3; /* ~60% white for specified content */
+    --header-bg: #121212;
+    --badge-bg: #2a2a2a;
+}
+
+body {
+    font-family: 'Fira Code', monospace;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="30" font-family="monospace" font-size="20" fill="%2300ff41">01</text><text x="50" y="50" font-family="monospace" font-size="20" fill="%2300ff41">10</text><text x="20" y="70" font-family="monospace" font-size="20" fill="%2300ff41">01</text><text x="70" y="25" font-family="monospace" font-size="20" fill="%2300ff41">10</text></svg>');
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+}
+
+h1, h2, h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 700;
+}
+
+.navbar {
+    background-color: var(--header-bg);
+    box-shadow: 0 4px 15px rgba(0, 255, 65, 0.15);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 700;
+    color: var(--primary-color);
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.navbar-brand::before {
+    content: ">";
+    margin-right: 5px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.navbar-toggler {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.nav-link {
+    color: var(--text-color);
+    margin: 0 8px;
+    position: relative;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hero {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: var(--header-bg);
+    border: 1px solid var(--secondary-color);
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.section-title {
+    color: var(--primary-color);
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.section-title::before {
+    content: "[";
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+.section-title::after {
+    content: "]";
+    margin-left: 8px;
+    color: var(--secondary-color);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 255, 65, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 255, 65, 0.2);
+}
+
+.card-header {
+    background-color: rgba(0, 143, 17, 0.2);
+    border-bottom: 1px solid var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.card-preface {
+    color: #ffffff; /* Pure white for MERN Stack text */
+}
+
+.card-preface i {
+    color: var(--primary-color); /* Green icon matching theme */
+}
+
+.skill-card, .project-card {
+    height: 100%;
+}
+
+.project-card img {
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.project-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+.project-card .card-title {
+    color: var(--primary-color); /* Green for project titles like SFSEAS */
+}
+
+.badge.bg-dark {
+    background-color: var(--badge-bg) !important;
+    color: var(--primary-color);
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.contact-link {
+    color: var(--content-text-color); /* ~60% white */
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.lang-icon {
+    color: var(--primary-color);
+    margin-right: 8px;
+    width: 25px;
+    text-align: center;
+}
+
+.footer {
+    background-color: var(--header-bg);
+    border-top: 1px solid var(--secondary-color);
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+.typing-effect::after {
+    content: "|";
+    animation: blink 1s step-end infinite;
+}
+
+.terminal {
+    background-color: var(--header-bg);
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+    margin: 20px 0;
+    border: 1px solid var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.terminal-header {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+}
+
+.terminal-prompt {
+    color: var(--primary-color);
+}
+
+.terminal-output {
+    color: var(--text-color);
+}
+
+.progress {
+    height: 8px;
+    background-color: var(--header-bg);
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--header-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+.portfolio-text {
+    color: #ffffff; /* Pure white for "You're looking at it!" */
+}
+
+/* Targeted content text color adjustments */
+#about .card-body p {
+    color: var(--content-text-color);
+}
+
+#skills .skill-card .card-body p {
+    color: var(--content-text-color);
+}
+
+#programming-languages .card-body .fw-bold {
+    color: var(--content-text-color);
+}
+
+#tech-stack .card-body p,
+#tech-stack .card-body ul li,
+#tech-stack .card-body .p-2 p {
+    color: var(--content-text-color);
+}
+
+#projects .project-card .card-text {
+    color: var(--content-text-color);
+}
+
+#contact .card-body h5 {
+    color: var(--content-text-color);
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .nav-link {
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+    
+    .hero {
+        min-height: 180px;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .hero-content {
+        padding: 0;
+    }
+    
+    .profile-img {
+        max-width: 150px;
+        margin: 0 auto 15px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        margin-bottom: 10px;
+    }
+    
+    .card-body {
+        padding: 12px;
+    }
+    
+    .project-card img {
+        height: 150px;
+    }
+    
+    .terminal {
+        padding: 10px;
+        margin: 15px 0;
+    }
+    
+    .terminal-header {
+        font-size: 0.7rem;
+        padding: 1px 8px;
+    }
+    
+    .social-links a {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+    
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .tech-stack .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .tech-stack .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tech-stack .p-2 {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    h1.display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .lang-icon {
+        width: 20px;
+        font-size: 1rem;
+    }
+}
